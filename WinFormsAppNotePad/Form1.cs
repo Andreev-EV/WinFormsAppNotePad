@@ -215,12 +215,24 @@ namespace WinFormsAppNotePad
 
         public void CopyText()
         {
-            Clipboard.SetText(tBMain.SelectedText);
+            if(tBMain.SelectionLength>0)
+                Clipboard.SetText(tBMain.SelectedText);
         }
         public void CutText()
         {
-            Clipboard.SetText(tBMain.SelectedText);
-            tBMain.Text = tBMain.Text.Remove(tBMain.SelectionStart, tBMain.SelectionLength);
+            if (tBMain.SelectionLength > 0)
+            {
+                Clipboard.SetText(tBMain.SelectedText);
+                tBMain.Text = tBMain.Text.Remove(tBMain.SelectionStart, tBMain.SelectionLength);
+            }
+        }
+
+        public void DelText()
+        {
+            if (tBMain.SelectionLength > 0)
+            {
+                tBMain.SelectedText = "";
+            }
         }
 
         public void PasteText()
@@ -258,7 +270,7 @@ namespace WinFormsAppNotePad
 
         private void menuItemDel_Click(object sender, EventArgs e)
         {
-            CutText();
+            DelText();
         }
 
         private void menuItemSelectAll_Click(object sender, EventArgs e)

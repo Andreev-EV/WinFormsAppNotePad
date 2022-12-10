@@ -684,7 +684,7 @@
             this.tsBtnDel.Name = "tsBtnDel";
             this.tsBtnDel.Size = new System.Drawing.Size(23, 22);
             this.tsBtnDel.Text = "Удалить";
-            this.tsBtnDel.Click += new System.EventHandler(this.menuItemCut_Click);
+            this.tsBtnDel.Click += new System.EventHandler(this.menuItemDel_Click);
             // 
             // textBoxFind
             // 
