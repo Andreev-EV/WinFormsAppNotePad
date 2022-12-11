@@ -8,12 +8,25 @@ namespace WinFormsAppNotePad
 {
     public partial class FormNP : Form
     {
+        Stack<Repeat> undo = new Stack<Repeat>();
+        Stack<Repeat> redo = new Stack<Repeat>();
 
         public string filename = "";
         public bool isFileChanged;
         public FormNP()
         {
             InitializeComponent();
+           
+            undo.Push(new Repeat(tBMain.Text, tBMain.Font, tBMain.BackColor, tBMain.SelectionStart));
+            isUndeRedo();
+        }
+
+        public void isUndeRedo()
+        {
+            tsBtnCancel.Enabled = undo.Count > 1;
+            menuItemUndo.Enabled = undo.Count > 1;
+            btnRedo.Enabled = redo.Count > 0;
+            menuItemRedo.Enabled = redo.Count > 0;
         }
 
         private void menuItemTransfer_Click(object sender, EventArgs e)
@@ -158,7 +171,9 @@ namespace WinFormsAppNotePad
 
         private void tBMain_TextChanged(object sender, EventArgs e)
         {
-            
+            if(undo.Peek() != null && undo.Peek().Text != tBMain.Text)
+                undo.Push(new Repeat(tBMain.Text, tBMain.Font, tBMain.BackColor, tBMain.SelectionStart));
+            isUndeRedo();
             if (!isFileChanged)
             {
                 if (this.Text[0] != '*')
@@ -167,6 +182,8 @@ namespace WinFormsAppNotePad
                     this.Text = "*" + this.Text;
                 }
             }
+            tSSLPos.Text = $"Стр {tBMain.GetLineFromCharIndex(tBMain.SelectionStart) + 1}," +
+                $" стлб {tBMain.SelectionStart - tBMain.GetFirstCharIndexOfCurrentLine() +1}";
             
         }
 
@@ -289,11 +306,6 @@ namespace WinFormsAppNotePad
             }
         }
 
-        private void menuItemNewWindow_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void FormThemeLight_Click(object sender, EventArgs e)
         {
             if(FormThemeDark.Checked) 
@@ -306,7 +318,6 @@ namespace WinFormsAppNotePad
             tSPanel.BackColor = Color.WhiteSmoke;
             statusStrip.BackColor = Color.WhiteSmoke;
             statusStrip.ForeColor = Color.Black;
-
         }
 
         private void FormThemeDark_Click(object sender, EventArgs e)
@@ -328,6 +339,36 @@ namespace WinFormsAppNotePad
             //}
         }
 
+        private void menuItemUndo_Click(object sender, EventArgs e)
+        {
+            if(undo.Count > 0)
+            {
+                tBMain.Font = undo.Peek().fontColor;
+                tBMain.BackColor = undo.Peek().backColor;
+                tBMain.Text = undo.Peek().Text;
+                tBMain.SelectionStart = undo.Peek().curPos;
+                redo.Push(undo.Pop());
+                isUndeRedo();
+            }
+        }
 
+        private void menuItemRedo_Click(object sender, EventArgs e)
+        {
+            if (redo.Count > 0)
+            {
+                var curPos = tBMain.SelectionStart;
+                tBMain.Font = redo.Peek().fontColor;
+                tBMain.BackColor = redo.Peek().backColor;
+                tBMain.Text = redo.Peek().Text;
+                tBMain.SelectionStart = redo.Peek().curPos;
+                undo.Push(redo.Pop());
+                isUndeRedo();
+            }
+        }
+
+        private void menuItemScaleMax_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

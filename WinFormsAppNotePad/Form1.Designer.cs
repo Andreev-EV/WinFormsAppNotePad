@@ -32,7 +32,6 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.tsmItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCreate = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemNewWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSaveAs = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,7 +128,6 @@
             // 
             this.tsmItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemCreate,
-            this.menuItemNewWindow,
             this.menuItemOpen,
             this.menuItemSave,
             this.menuItemSaveAs,
@@ -147,26 +145,16 @@
             this.menuItemCreate.Image = global::WinFormsAppNotePad.Properties.Resources.New;
             this.menuItemCreate.Name = "menuItemCreate";
             this.menuItemCreate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.menuItemCreate.Size = new System.Drawing.Size(260, 22);
+            this.menuItemCreate.Size = new System.Drawing.Size(228, 22);
             this.menuItemCreate.Text = "Создать";
             this.menuItemCreate.Click += new System.EventHandler(this.tsBtnCreate_Click);
-            // 
-            // menuItemNewWindow
-            // 
-            this.menuItemNewWindow.Image = global::WinFormsAppNotePad.Properties.Resources.Export;
-            this.menuItemNewWindow.Name = "menuItemNewWindow";
-            this.menuItemNewWindow.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.N)));
-            this.menuItemNewWindow.Size = new System.Drawing.Size(260, 22);
-            this.menuItemNewWindow.Text = "Новое окно";
-            this.menuItemNewWindow.Click += new System.EventHandler(this.menuItemNewWindow_Click);
             // 
             // menuItemOpen
             // 
             this.menuItemOpen.Image = global::WinFormsAppNotePad.Properties.Resources.Open;
             this.menuItemOpen.Name = "menuItemOpen";
             this.menuItemOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.menuItemOpen.Size = new System.Drawing.Size(260, 22);
+            this.menuItemOpen.Size = new System.Drawing.Size(228, 22);
             this.menuItemOpen.Text = "Открыть...";
             this.menuItemOpen.Click += new System.EventHandler(this.tsBtnOpen_Click);
             // 
@@ -175,7 +163,7 @@
             this.menuItemSave.Image = global::WinFormsAppNotePad.Properties.Resources.Save;
             this.menuItemSave.Name = "menuItemSave";
             this.menuItemSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.menuItemSave.Size = new System.Drawing.Size(260, 22);
+            this.menuItemSave.Size = new System.Drawing.Size(228, 22);
             this.menuItemSave.Text = "Сохранить";
             this.menuItemSave.Click += new System.EventHandler(this.menuItemSave_Click);
             // 
@@ -183,20 +171,20 @@
             // 
             this.menuItemSaveAs.Image = global::WinFormsAppNotePad.Properties.Resources.Save_as;
             this.menuItemSaveAs.Name = "menuItemSaveAs";
-            this.menuItemSaveAs.Size = new System.Drawing.Size(260, 22);
+            this.menuItemSaveAs.Size = new System.Drawing.Size(228, 22);
             this.menuItemSaveAs.Text = "Сохранить как...";
             this.menuItemSaveAs.Click += new System.EventHandler(this.menuItemSaveAs_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(257, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(225, 6);
             // 
             // menuItemPageSettings
             // 
             this.menuItemPageSettings.Image = global::WinFormsAppNotePad.Properties.Resources.Page_setup;
             this.menuItemPageSettings.Name = "menuItemPageSettings";
-            this.menuItemPageSettings.Size = new System.Drawing.Size(260, 22);
+            this.menuItemPageSettings.Size = new System.Drawing.Size(228, 22);
             this.menuItemPageSettings.Text = "Параментры страницы";
             this.menuItemPageSettings.Click += new System.EventHandler(this.menuItemPageSettings_Click);
             // 
@@ -205,20 +193,20 @@
             this.menuItemPrint.Image = global::WinFormsAppNotePad.Properties.Resources.Print;
             this.menuItemPrint.Name = "menuItemPrint";
             this.menuItemPrint.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.menuItemPrint.Size = new System.Drawing.Size(260, 22);
+            this.menuItemPrint.Size = new System.Drawing.Size(228, 22);
             this.menuItemPrint.Text = "Печать";
             this.menuItemPrint.Click += new System.EventHandler(this.menuItemPrint_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(257, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(225, 6);
             // 
             // menuItemExit
             // 
             this.menuItemExit.Image = global::WinFormsAppNotePad.Properties.Resources.Exit;
             this.menuItemExit.Name = "menuItemExit";
-            this.menuItemExit.Size = new System.Drawing.Size(260, 22);
+            this.menuItemExit.Size = new System.Drawing.Size(228, 22);
             this.menuItemExit.Text = "Выход";
             this.menuItemExit.Click += new System.EventHandler(this.menuItemExit_Click);
             // 
@@ -245,19 +233,23 @@
             // 
             // menuItemUndo
             // 
+            this.menuItemUndo.Enabled = false;
             this.menuItemUndo.Image = global::WinFormsAppNotePad.Properties.Resources.Undo;
             this.menuItemUndo.Name = "menuItemUndo";
             this.menuItemUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.menuItemUndo.Size = new System.Drawing.Size(228, 22);
             this.menuItemUndo.Text = "Отменить";
+            this.menuItemUndo.Click += new System.EventHandler(this.menuItemUndo_Click);
             // 
             // menuItemRedo
             // 
+            this.menuItemRedo.Enabled = false;
             this.menuItemRedo.Image = global::WinFormsAppNotePad.Properties.Resources.Redo;
             this.menuItemRedo.Name = "menuItemRedo";
             this.menuItemRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
             this.menuItemRedo.Size = new System.Drawing.Size(228, 22);
             this.menuItemRedo.Text = "Повтор";
+            this.menuItemRedo.Click += new System.EventHandler(this.menuItemRedo_Click);
             // 
             // menuItemCut
             // 
@@ -431,6 +423,7 @@
             this.menuItemScaleMax.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Oemplus)));
             this.menuItemScaleMax.Size = new System.Drawing.Size(396, 22);
             this.menuItemScaleMax.Text = "Увеличить";
+            this.menuItemScaleMax.Click += new System.EventHandler(this.menuItemScaleMax_Click);
             // 
             // menuItemScaleMin
             // 
@@ -631,15 +624,18 @@
             // tsBtnCancel
             // 
             this.tsBtnCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsBtnCancel.Enabled = false;
             this.tsBtnCancel.Image = global::WinFormsAppNotePad.Properties.Resources.Undo;
             this.tsBtnCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnCancel.Name = "tsBtnCancel";
             this.tsBtnCancel.Size = new System.Drawing.Size(23, 22);
             this.tsBtnCancel.Text = "Отменить";
+            this.tsBtnCancel.Click += new System.EventHandler(this.menuItemUndo_Click);
             // 
             // btnRedo
             // 
             this.btnRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRedo.Enabled = false;
             this.btnRedo.Image = global::WinFormsAppNotePad.Properties.Resources.Redo;
             this.btnRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRedo.Name = "btnRedo";
@@ -789,7 +785,6 @@
         private MenuStrip menuStrip;
         private ToolStripMenuItem tsmItemFile;
         private ToolStripMenuItem menuItemCreate;
-        private ToolStripMenuItem menuItemNewWindow;
         private ToolStripMenuItem menuItemOpen;
         private ToolStripMenuItem menuItemSave;
         private ToolStripMenuItem menuItemSaveAs;
